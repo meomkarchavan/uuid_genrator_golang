@@ -5,16 +5,20 @@ import (
 	"fmt"
 )
 
-func Uuid() string {
-	b := make([]byte, 16)
+func Uuid(parts int) string {
+	len := 4 * parts
+	b := make([]byte, len)
 	_, err := rand.Read(b)
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return err.Error()
 	}
-	fmt.Println(b)
-
-	uuid := fmt.Sprintf("%X-%X-%X-%X-%X", b[0:3], b[4:6], b[6:8], b[8:10], b[10:])
+	fmt.Println(parts)
+	uuid := fmt.Sprintf("%X", b[0:3])
+	for i := 4; i < len-2; i += 3 {
+		fmt.Println(i, i+3)
+		uuid += fmt.Sprintf("-%X", b[i:i+3])
+	}
 	return uuid
 
 }
