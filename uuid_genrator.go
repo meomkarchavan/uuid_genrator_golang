@@ -13,10 +13,8 @@ func Uuid(parts int) string {
 		fmt.Println("Error: ", err)
 		return err.Error()
 	}
-	fmt.Println(parts)
 	uuid := fmt.Sprintf("%X", b[0:3])
 	for i := 4; i < len-2; i += 3 {
-		fmt.Println(i, i+3)
 		uuid += fmt.Sprintf("-%X", b[i:i+3])
 	}
 	return uuid
