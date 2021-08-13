@@ -1,4 +1,4 @@
-package uuid
+package uuid_genrator
 
 import (
 	"crypto/rand"
