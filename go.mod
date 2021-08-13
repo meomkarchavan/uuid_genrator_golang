@@ -1,3 +1,3 @@
-module uuid
+module ...
 
 go 1.16
